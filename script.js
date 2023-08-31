@@ -6,10 +6,10 @@ const fetchCountry = async () => {
 
 let allCountriesData = [];
 
-const filterCountries = inputValue => {
+const filterCountries = searchValue => {
     const filteredCountries = allCountriesData.filter(country => {
         const countryNameCommon = country.name.common.toLowerCase();
-        return countryNameCommon.includes(inputValue.toLowerCase());
+        return countryNameCommon.includes(searchValue.toLowerCase());
     });
     return filteredCountries;
 };
@@ -64,6 +64,7 @@ const handleSubmission = event => {
 
 const setUp = async () => {
     allCountriesData = await fetchCountry();
+    clearList();
     populateCountries(allCountriesData); // have all countries to start with on page
 }
 
